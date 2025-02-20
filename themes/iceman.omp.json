@@ -1,0 +1,142 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "blue": "#43CCEA",
+    "green": "#00FF0D",
+    "grey": "#BBBBBB",
+    "orange": "#FF6F00",
+    "prompt-background": "#272727",
+    "red": "#DD1E1E",
+    "white": "#FFFFFF",
+    "yellow": "#FFEB3B"
+  },
+  "console_title_template": "{{ if .WSL }}WSL/{{ end }}{{.Shell}} - {{.UserName}}@{{.HostName}}",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "template": "⚡",
+          "foreground": "p:red",
+          "type": "root",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "alpine": "",
+            "arch": "",
+            "centos": "",
+            "debian": "",
+            "elementary": "",
+            "fedora": "",
+            "gentoo": "",
+            "linux": "",
+            "macos": "",
+            "manjaro": "",
+            "mint": "",
+            "opensuse": "",
+            "raspbian": "",
+            "ubuntu": "",
+            "windows": "",
+            "wsl": ""
+          },
+          "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}}",
+          "foreground": "p:white",
+          "type": "os",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "mapped_shell_names": {
+              "pwsh": "PS"
+            }
+          },
+          "foreground": "p:white",
+          "type": "shell",
+          "style": "plain"
+        },
+        {
+          "leading_diamond": "<transparent,background></>",
+          "trailing_diamond": "",
+          "template": " {{ if .SSHSession }}󰌘 {{ end }}{{ .UserName }}@{{ .HostName }} ",
+          "foreground": "p:grey",
+          "background": "p:prompt-background",
+          "type": "session",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "folder_icon": "",
+            "folder_separator_icon": "<transparent>  </>",
+            "home_icon": "󰋜",
+            "style": "agnoster_short"
+          },
+          "leading_diamond": "<transparent,background></>",
+          "trailing_diamond": "",
+          "template": " {{ .Path }} ",
+          "foreground": "p:blue",
+          "background": "p:prompt-background",
+          "type": "path",
+          "style": "diamond"
+        },
+        {
+          "leading_diamond": "<transparent,background></>",
+          "trailing_diamond": "",
+          "template": "  {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} ",
+          "foreground": "p:yellow",
+          "background": "p:prompt-background",
+          "type": "python",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "fetch_stash_count": true,
+            "fetch_status": true
+          },
+          "leading_diamond": "<transparent,background></>",
+          "trailing_diamond": "",
+          "template": " {{ .HEAD }}{{ if .Staging.Changed }}<p:orange>  {{ .Staging.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} 󰆓 {{ .StashCount }}{{ end }} ",
+          "foreground": "p:green",
+          "background": "p:prompt-background",
+          "type": "git",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "style": "austin",
+            "threshold": 1000
+          },
+          "leading_diamond": "<transparent,background></>",
+          "trailing_diamond": "",
+          "template": " {{ .FormattedMs }} ",
+          "foreground": "p:white",
+          "background": "p:prompt-background",
+          "type": "executiontime",
+          "style": "diamond"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "always_enabled": true
+          },
+          "template": "󰘍 ",
+          "foreground": "p:green",
+          "type": "exit",
+          "style": "plain",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}p:red{{ end }}"
+          ]
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "version": 3,
+  "final_space": true
+}

@@ -17,6 +17,11 @@
       "alignment": "left",
       "segments": [
         {
+          "template": "\n",
+          "type": "text",
+          "style": "plain"
+        },
+        {
           "template": "⚡",
           "foreground": "p:red",
           "type": "root",
